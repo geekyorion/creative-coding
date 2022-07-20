@@ -1,0 +1,16 @@
+{
+  "name": "02-advanced",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "canvas-sketch --open",
+    "save": "canvas-sketch --open --output=sketches/",
+    "new": "canvas-sketch --new --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas-sketch": "^0.7.5"
+  }
+}
