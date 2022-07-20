@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "cs": "canvas-sketch",
     "start": "canvas-sketch --open",
     "save": "canvas-sketch --open --output=sketches/",
     "new": "canvas-sketch --new --open"
