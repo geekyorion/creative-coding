@@ -1,5 +1,5 @@
 const canvasSketch = require('canvas-sketch');
-const { toRad } = require('./utils');
+const { toRad, random } = require('./utils');
 
 const settings = {
   dimensions: [ 1080, 1080 ]
@@ -33,6 +33,8 @@ const sketch = () => {
       
       context.translate(x, y);
       context.rotate(-angle);
+
+      context.scale(random(0.5, 3), 1);
   
       context.beginPath();
       context.fillRect(-w * 0.5, -h * 0.5, w, h);
