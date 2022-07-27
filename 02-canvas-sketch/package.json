@@ -6,6 +6,7 @@
     "cs": "canvas-sketch",
     "start": "canvas-sketch --open",
     "save": "canvas-sketch --open --output=sketches/",
+    "save-only": "canvas-sketch --output=sketches/",
     "new": "canvas-sketch --new --open"
   },
   "keywords": [],
