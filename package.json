@@ -1,0 +1,17 @@
+{
+  "name": "creative-coding",
+  "version": "1.0.0",
+  "description": "Creative coding using JavaScript",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geekyorion/creative-coding.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geekyorion/creative-coding/issues"
+  },
+  "homepage": "https://github.com/geekyorion/creative-coding#readme"
+}
