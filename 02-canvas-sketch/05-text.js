@@ -48,7 +48,12 @@ const sketch = ({ width, height }) => {
 
     const typeData = typeContext.getImageData(0, 0, cols, rows).data;
 
+    // context.fillStyle = 'black';
+    // context.fillRect(0, 0, width, height);
+
     context.drawImage(typeCanvas, 0, 0);
+
+    context.font = `${cellSize}px ${fontFamily}`;
 
     for (let i = 0; i < numCells; i++) {
       const col = i % cols;
@@ -66,18 +71,26 @@ const sketch = ({ width, height }) => {
       context.save();
       context.translate(x, y);
       context.translate(cellSize * 0.5, cellSize * 0.5);
+      
       // context.fillRect(0, 0, cellSize, cellSize);
-      context.beginPath();
-      context.arc(0, 0, cellSize * 0.5, 0, Math.PI * 2);
-      context.fill();
+      
+      // context.beginPath();
+      // context.arc(0, 0, cellSize * 0.5, 0, Math.PI * 2);
+      // context.fill();
+
+      context.fillText(text, 0, 0);
+
       context.restore();
     }
   };
 };
 
 document.addEventListener('keyup', (event) => {
-  text = event.key.toUpperCase();
-  manager && manager.render();
+  const pressedKey = event.key.toUpperCase();
+  if (/^[A-Z]$/.test(pressedKey)) {
+    text = pressedKey;
+    manager && manager.render();
+  }
 });
 
 (async() => {
