@@ -1,4 +1,5 @@
 const canvasSketch = require('canvas-sketch');
+const random = require('canvas-sketch-util/random');
 
 const settings = {
   dimensions: [ 1080, 1080 ]
@@ -25,7 +26,7 @@ const sketch = ({ width, height }) => {
     typeContext.fillStyle = 'black';
     typeContext.fillRect(0, 0, cols, rows);
     
-    fontSize = cols;
+    fontSize = cols * 1.2;
 
     typeContext.fillStyle = 'white';
     typeContext.font = `${fontSize}px ${fontFamily}`;
@@ -48,12 +49,15 @@ const sketch = ({ width, height }) => {
 
     const typeData = typeContext.getImageData(0, 0, cols, rows).data;
 
-    // context.fillStyle = 'black';
-    // context.fillRect(0, 0, width, height);
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, width, height);
 
-    context.drawImage(typeCanvas, 0, 0);
+    context.textBaseline = 'middle';
+    context.textAlign = 'center';
 
-    context.font = `${cellSize}px ${fontFamily}`;
+    // context.drawImage(typeCanvas, 0, 0);
+
+    context.font = `${cellSize * 2}px ${fontFamily}`;
 
     for (let i = 0; i < numCells; i++) {
       const col = i % cols;
@@ -68,9 +72,13 @@ const sketch = ({ width, height }) => {
       const a = typeData[i * 4 + 3];
       context.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`;
 
+      const glyph = getGlyph(r);
+
       context.save();
       context.translate(x, y);
       context.translate(cellSize * 0.5, cellSize * 0.5);
+
+      if (Math.random() < 0.1) context.font = `${cellSize * 6}px ${fontFamily}`;
       
       // context.fillRect(0, 0, cellSize, cellSize);
       
@@ -78,12 +86,22 @@ const sketch = ({ width, height }) => {
       // context.arc(0, 0, cellSize * 0.5, 0, Math.PI * 2);
       // context.fill();
 
-      context.fillText(text, 0, 0);
+      context.fillText(glyph, 0, 0);
 
       context.restore();
     }
   };
 };
+
+const getGlyph = (v) => {
+  if (v < 50) return '';
+  if (v < 100) return '.';
+  if (v < 150) return '/';
+  if (v < 200) return '+';
+
+  const chars = ' =_~/'.split('');
+  return random.pick(chars);
+}
 
 document.addEventListener('keyup', (event) => {
   const pressedKey = event.key.toUpperCase();
