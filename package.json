@@ -7,8 +7,8 @@
     "type": "git",
     "url": "git+https://github.com/geekyorion/creative-coding.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["canvas", "sketch", "javascript", "design", "creative", "coding"],
+  "author": "geekyorion",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/geekyorion/creative-coding/issues"
